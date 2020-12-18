@@ -23,3 +23,6 @@ clean:venv
 env_show: venv
 	@echo ${FLASK_APP}
 	@echo ${FLASK_ENV}
+
+make_installable:
+	@pip install -e .
