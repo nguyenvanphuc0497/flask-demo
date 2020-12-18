@@ -21,7 +21,7 @@ def register():
         elif not password:
             error = 'Password is required.'
         elif db.execute(
-                'SELECT id FROM user WHERE user_name=', (user_name,)
+                'SELECT id FROM user WHERE user_name= ?', (user_name,)
         ).fetchone() is not None:
             error = 'User {} us already registered'.format(user_name)
 
@@ -38,7 +38,7 @@ def register():
     return render_template('auth/register.html')
 
 
-@bp.route('/route', methods=('GET', 'POST'))
+@bp.route('/login', methods=('GET', 'POST'))
 def login():
     if request.method == 'POST':
         user_name = request.form['username']
@@ -46,7 +46,7 @@ def login():
         db = get_db()
         error = None
         user = db.execute(
-            'SELECT * FROM user WHERE username= ?', (user_name,)
+            'SELECT * FROM user WHERE user_name= ?', (user_name,)
         ).fetchone()
 
         if user is None:
@@ -57,7 +57,7 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user['id']
-            return redirect(url_for('index'))
+            return redirect(url_for('auth.login'))
 
         flash(error)
 
@@ -78,7 +78,7 @@ def load_logged_in_user():
 @bp.route('/logout')
 def logout():
     session.clear()
-    return redirect(url_for('index'))
+    return redirect(url_for('auth.login'))
 
 
 def login_required(view):

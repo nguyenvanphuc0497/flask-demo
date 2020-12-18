@@ -1,5 +1,5 @@
 venv:
-	@. venv/bin/activate
+	@srouce venv/bin/activate
 	@python -V
 
 requirement: venv
@@ -19,3 +19,7 @@ setup:venv
 
 clean:venv
 	@pip uninstall -r requirements.txt
+
+env_show: venv
+	@echo ${FLASK_APP}
+	@echo ${FLASK_ENV}
