@@ -1,5 +1,6 @@
 venv:
 	@. venv/bin/activate
+	@python -V
 
 requirement: venv
 	@pip freeze
@@ -12,3 +13,9 @@ run: venv
 
 init_db:venv
 	@flask init-db
+
+setup:venv
+	@pip install -r requirements.txt
+
+clean:venv
+	@pip uninstall -r requirements.txt
