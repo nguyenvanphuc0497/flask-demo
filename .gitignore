@@ -1,6 +1,6 @@
 .idea/
 venv/
-flaskr/**pycache**/
+__pycache__
 *.sqlite
 
 instance/
