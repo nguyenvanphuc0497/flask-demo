@@ -2,7 +2,7 @@ attrs==20.3.0
 click==7.1.2
 coverage==5.3
 Flask==1.1.2
--e git+git@github.com:nguyenvanphuc0497/flask-demo.git@d57dee688407885919e3b753c7463bef2bdc90a1#egg=flaskr
+# -e git+git@github.com:nguyenvanphuc0497/flask-demo.git@d57dee688407885919e3b753c7463bef2bdc90a1#egg=flaskr
 importlib-metadata==3.3.0
 iniconfig==1.1.1
 itsdangerous==1.1.0
